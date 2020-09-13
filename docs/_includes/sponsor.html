@@ -1,0 +1,46 @@
+<section itemprop="text">
+  <div class="tire">
+    {% for tire in page.tire_column.tires %}
+      {% if tire.invisible != true %}
+        <div class="tire-item">
+          <div class="tire-item__title">{{ tire.title }}</div>
+          <div class="tire-item__price">${{ tire.price }}</div>
+          <div class="tire-item__period">PER MONTH</div>
+          <button id="{{ tire.btn_id }}" class="btn btn--success btn--large">Join</button>
+          <div>
+            <ul>
+              {% for b in tire.benefits %}
+                <li>{{ b | markdownify | remove: "<p>" | remove: "</p>" }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div class="tire__disclaimer">
+    <ul>
+      {% for d in page.tire_column.disclaimer %}
+        <li>{{ d }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<!--
+<section>
+  <h1>Submit a request</h1>
+  <form action="https://formspree.io/nesdis@gmail.com" method="POST">
+    <label>Subject:
+      <select name="Subject">
+        <option value="Commercial Licensing">Commercial Licensing</option>
+        <option value="Unsubscribe">Unsubscribe</option>
+      </select>
+    </label>
+    <label>Email:
+      <input name="email" type="email">
+    </label>
+    <input type="submit" value="Send">
+  </form>
+</section>
+-->
